@@ -7,14 +7,13 @@ subcommand for you.
 
 from conda.plugins import hookimpl, CondaSubcommand
 
+from .main import solve_subcommand
+
 
 @hookimpl
-def conda_subcommands():
-    def hello_conda(args):
-        print("Hello conda!")
-
+def conda_subcommands() -> None:
     yield CondaSubcommand(
-        name="hello", 
-        action=hello_conda,
-        summary="Command that prints \"Hello conda!\""
+        name="solve",
+        action=solve_subcommand,
+        summary="Solve an environment",
     )
